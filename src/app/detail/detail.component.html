@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+<div class="w3-section container">
+  <div class="title w3-padding">
+    <h3 class="w3-text-pink overflow"><b>{{nameRecette}}</b></h3>
+  </div>
+  <div class="w3-card-4 card w3-padding w3-white">
+    <div class="w3-row-padding w3-padding w3-text-pink">
+      <ng-template [ngIf]="nbstar === 0">
+        <span class="w3-col l4 w3-xlarge">
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </span>
+      </ng-template>
+      <ng-template [ngIf]="nbstar === 1">
+        <span class="w3-col l4 w3-xlarge">
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </span>
+      </ng-template>
+      <ng-template [ngIf]="nbstar === 2">
+        <span class="w3-col l4 w3-xlarge">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </span>
+      </ng-template>
+      <ng-template [ngIf]="nbstar === 3">
+        <span class="w3-col l4 w3-xlarge">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </span>
+      </ng-template>
+      <ng-template [ngIf]="nbstar === 4">
+        <span class="w3-col l4 w3-xlarge">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </span>
+      </ng-template>
+      <ng-template [ngIf]="nbstar === 5">
+        <span class="w3-col l4 w3-xlarge">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </span>
+      </ng-template>
+    </div>
+    <div class="w3-row-padding w3-padding">
+      <div class="w3-half">
+        <label class="w3-text-pink"><b>{{'various.list' | translate}}</b></label>
+        <div class="w3-border w3-padding height200 overflowAuto">
+          <p class="margin0" *ngFor="let i of list_ingredient">
+            - {{i}}
+          </p>
+        </div>
+      </div>
+      <div class="w3-half">
+        <label class="w3-text-pink"><b>{{'various.prep' | translate}}</b></label>
+        <textarea readonly class="w3-input w3-border noResize height200" [(ngModel)]="preparation"></textarea>
+      </div>
+    </div>
+    <div class="w3-padding w3-row-padding">
+      <div class="w3-col l6 m6 s6">
+        <button class="w3-button w3-pink w3-hover-text-pink w3-hover-white w3-border" [routerLink]="['/edit',nameRecette]">{{'button.edit' | translate}}</button>
+      </div>
+      <div class="w3-col l6 m6 s6 w3-right-align">
+        <button class="w3-button w3-pink w3-hover-text-pink w3-hover-white w3-border " (click)="supp()">{{'button.delete' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>

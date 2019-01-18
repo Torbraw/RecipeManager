@@ -1,0 +1,49 @@
+{
+  "login": {
+    "google": "Connectez vous avec Google pour commencer",
+    "title": "Votre gestionnaire de recettes",
+    "body": "Fatigué de chercher dans tous vos livres pour chercher LA recette? Utiliser se site pour garder vos recettes aux mêmes endroits et les retrouvés plus facilement!"
+  },
+  "navbar": {
+    "logout": "Se déconnecter"
+  },
+  "index": {
+    "noCriteria": "Aucune recettes ne corresponds à vos critères.",
+    "here": "ici",
+    "noRecipe": "Vous n'avez pas encore ajoutez de recettes, commencez par en ajoutez une",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "list": "Liste des recettes",
+    "search": "Rechercher",
+    "detail": "Détail"
+  },
+  "error": {
+    "404": "Erreur 404",
+    "notFound": "Désolé, impossible de trouver la page que vous demandez!",
+    "return": "Revenir à la liste des recettes"
+  },
+  "editDialog": {
+    "editIng": "Modifier l'ingrédient"
+  },
+  "button": {
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "connect": "Se connecter"
+  },
+  "placeholder": {
+    "qte": "Quantité",
+    "ing": "Ingrédient"
+  },
+  "edit": {
+    "editRecipe": "Modifier une recette"
+  },
+  "various": {
+    "list": "Liste des ingrédients",
+    "prep": "Préparation",
+    "name": "Nom",
+    "add": "Ajouter"
+  },
+  "create": {
+    "addRecipe": "Ajouter une recette"
+  }
+}

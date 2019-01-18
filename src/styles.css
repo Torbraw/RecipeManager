@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.pointer{
+  cursor: pointer;
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60%;
+}
+html, body, .height {
+  height:100%;
+}
+body {
+  background-image: url("/assets/Image/pattern.png");
+  background-size: cover;
+}
+.title {
+  background-color: #cccccc;
+  border-radius: 15px 15px 0 0;
+}
+.res {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.filter:hover {
+  color: #ba124a!important;
+  font-weight: bold;
+}
+.w3-bar-item:hover{
+  color: #cccccc;
+}
+.my-pagination .ngx-pagination .current {
+  background: #e91e63;
+}
+.ngx-pagination {
+  padding-inline-start: 0;
+}
+a {
+  text-decoration: none;
+}
+#smallNav {
+  margin-top:52px;
+}
+#here {
+  text-decoration: underline;
+}
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.padding0 {
+  padding: 0!important;
+}
+.padding10top {
+  padding-top: 10px
+}
+.height200 {
+  height: 200px;
+}
+.noResize {
+  resize: none;
+}
+.overflowAuto{
+  overflow: auto;
+}
+.margin0{
+  margin: 0;
+}
+.height50 {
+  height: 50px;
+}
+.height40 {
+  height: 40px;
+}
+.padding8 {
+  padding: 8px;
+}
+
+@media screen and (max-width:1024px) and (min-width:601px) {
+  #login {
+    width: 90%;
+  }
+  .container {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #index h1 {
+    font-size: 24px;
+  }
+  #index .w3-large {
+    font-size: 16px!important;
+  }
+  #index .w3-small {
+    font-size: 10px!important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #login {
+    width: 95%;
+  }
+  .w3-xxxlarge {
+    font-size: 36px!important;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  #br_login {
+    display: none;
+  }
+  .container {
+    max-width: 95%;
+  }
+  .addBtn {
+    text-align: right!important;
+  }
+  .card {
+    padding-left: 0!important;
+    padding-right: 0!important;
+  }
+}

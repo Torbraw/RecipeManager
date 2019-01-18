@@ -1,0 +1,49 @@
+{
+  "login": {
+    "google": "Sign in with Google to start",
+    "title": "Your recipes manager",
+    "body": "Tired of searching in all your books to find THE recipe? Use this site to keep all your recipes in the same place to find it more easily!"
+  },
+  "navbar": {
+    "logout": "Sign out"
+  },
+  "index": {
+    "noCriteria": "No recipes matches your criterias.",
+    "here": "here",
+    "noRecipe": "You don't have any recipe, start by adding one",
+    "previous": "Previous",
+    "next": "Next",
+    "list": "Recipes list",
+    "search": "Search",
+    "detail": "Detail"
+  },
+  "error": {
+    "404": "Error 404",
+    "notFound": "Sorry, it's impossible to find the page you asked!",
+    "return": "Go back to the recipes list"
+  },
+  "editDialog": {
+    "editIng": "Edit the ingredient"
+  },
+  "button": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "connect": "Sign in"
+  },
+  "placeholder": {
+    "qte": "Quantity",
+    "ing": "Ingredient"
+  },
+  "edit": {
+    "editRecipe": "Edit a recipe"
+  },
+  "various": {
+    "list": "Ingredients list",
+    "prep": "Making",
+    "name": "Name",
+    "add": "Add"
+  },
+  "create": {
+    "addRecipe": "Add a recipe"
+  }
+}

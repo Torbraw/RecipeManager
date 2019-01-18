@@ -1,0 +1,19 @@
+<h1 mat-dialog-title class="overflow">{{'editDialog.editIng' | translate}} <span class="w3-text-pink">{{nom}}</span></h1>
+<mat-dialog-content class="padding0">
+  <div class="w3-row-padding w3-padding">
+    <div class="w3-col l3 m3 res">
+      <input class="w3-input w3-border" [(ngModel)]="data.qte" name="qte" placeholder="{{'placeholder.qte' | translate}}">
+    </div>
+    <div class="w3-col l3 m3 res">
+      <select class="w3-input w3-border" [(ngModel)]="data.type" name="type">
+        <option *ngFor="let option of data.types" value="{{option.name}}">{{option.name}}</option>
+      </select>
+    </div>
+    <div class="w3-col l6 m6 res">
+      <input class="w3-input w3-border" [(ngModel)]="data.nom" name="ingredient" placeholder="{{'placeholder.ing' | translate}}">
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="w3-button w3-pink w3-hover-text-pink w3-hover-white w3-border w3-margin l6" [mat-dialog-close]="data">{{'button.edit' | translate}}</button>
+</mat-dialog-actions>

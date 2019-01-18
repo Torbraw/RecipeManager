@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<div class="w3-section container">
+  <div class="title w3-padding">
+    <h3 class="w3-text-pink"><b>{{'create.addRecipe' | translate}}</b></h3>
+  </div>
+  <form>
+    <div class="w3-card-4 card w3-padding w3-white">
+      <div class="w3-row-padding w3-padding">
+        <div class="w3-col l8 m8 res">
+          <input [(ngModel)]="nameRecette" name="nameRecette" type="text" class="w3-input w3-border" placeholder="{{'various.name' | translate}}">
+        </div>
+        <div class="w3-col l4 m4 w3-display-container res height40">
+          <div class="w3-text-pink w3-display-left padding8">
+            <i class="far fa-star w3-xlarge pointer" (click)="clickStar(1)" id="star1"></i>
+            <i class="far fa-star w3-xlarge pointer" (click)="clickStar(2)" id="star2"></i>
+            <i class="far fa-star w3-xlarge pointer" (click)="clickStar(3)" id="star3"></i>
+            <i class="far fa-star w3-xlarge pointer" (click)="clickStar(4)" id="star4"></i>
+            <i class="far fa-star w3-xlarge pointer" (click)="clickStar(5)" id="star5"></i>
+          </div>
+        </div>
+      </div>
+      <div class="w3-row-padding w3-padding">
+        <div class="w3-col l3 m3 res">
+          <input class="w3-input w3-border" [(ngModel)]="qte" name="qte" placeholder="{{'placeholder.qte' | translate}}">
+        </div>
+        <div class="w3-col l3 m3 res">
+          <select class="w3-input w3-border" [(ngModel)]="type" name="type">
+            <option *ngFor="let option of types" value="{{option.name}}">{{option.name}}</option>
+          </select>
+        </div>
+        <div class="w3-col l5 m5 res">
+          <input class="w3-input w3-border" [(ngModel)]="ingredient" name="ingredient" placeholder="{{'placeholder.ing' | translate}}">
+        </div>
+        <div class="w3-col l1 m1 res addBtn">
+          <button class="w3-button w3-pink w3-hover-text-pink w3-hover-white w3-border" (click)="addingredient()">+</button>
+        </div>
+      </div>
+      <div class="w3-padding">
+        <p class="w3-text-red margin0" #errIng></p>
+      </div>
+      <div class="w3-row-padding w3-padding">
+        <label class="w3-text-pink"><b>{{'various.list' | translate}}</b></label>
+        <div class="w3-border w3-padding overflowAuto height200">
+          <ng-template #txt></ng-template>
+        </div>
+      </div>
+      <div class="w3-row-padding w3-padding">
+        <textarea class="height200 noResize w3-input w3-border" [(ngModel)]="preparation" name="preparation" placeholder="{{'various.prep' | translate}}"></textarea>
+      </div>
+      <div class="w3-padding w3-display-container height50">
+        <button class="w3-button w3-pink w3-hover-text-pink w3-hover-white w3-border w3-right" (click)="addRecette()">{{'various.add' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
