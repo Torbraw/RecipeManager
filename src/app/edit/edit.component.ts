@@ -51,8 +51,9 @@ export class EditComponent implements OnInit {
         this.populatetext();
         $observ.unsubscribe();
       });
-      this.service.getTypes().subscribe(data => {
-        this.types = data;
+      let obv1 = this.service.getTypes().subscribe(data => {
+          this.types = data;
+          obv1.unsubscribe();
       });
     });
   }

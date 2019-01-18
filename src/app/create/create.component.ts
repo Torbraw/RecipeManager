@@ -69,8 +69,9 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   ngOnInit() {
-    this.service.getTypes().subscribe(data => {
+    let obv = this.service.getTypes().subscribe(data => {
       this.types = data;
+      obv.unsubscribe();
     });
   }
 
