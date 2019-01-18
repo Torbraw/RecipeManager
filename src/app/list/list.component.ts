@@ -102,7 +102,7 @@ export class ListComponent implements OnInit {
   }
 
   populatelist(field: string, dir: string) {
-    let obv = this.service.getRecettes(field, this.uid).subscribe(data => {
+    this.service.getRecettes(field, this.uid).subscribe(data => {
       for (let i = 0; i<data.length;i++) {
         this.recettes[i] = new Recetteindex(data[i].name,data[i].nbStar);
       }
@@ -117,7 +117,6 @@ export class ListComponent implements OnInit {
         this.recettes.reverse();
       }
       this.recettesAff = this.recettes;
-      obv.unsubscribe();
     });
   }
 

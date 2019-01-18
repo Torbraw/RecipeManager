@@ -23,6 +23,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {AuthGuard} from './services/auth.guard';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -68,7 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       { path: 'login', component: LoginComponent },
     ], {onSameUrlNavigation: 'reload'})
   ],
-  providers: [],
+  providers: [AngularFirestore],
   entryComponents: [DynamicComponent, EditdialogComponent],
   bootstrap: [AppComponent]
 })
