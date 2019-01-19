@@ -38,6 +38,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
   nbstar = 0;
   list_ingredient = new Map();
   uid;
+  y;
 
   constructor(private service: FirebaseService,private factoryResolver: ComponentFactoryResolver,private router: Router, public dialog: MatDialog,
               private auth: AuthService, public translate: TranslateService) {
@@ -69,6 +70,8 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   ngOnInit() {
+    let d = new Date();
+    this.y = d.getFullYear();
     let obv = this.service.getTypes().subscribe(data => {
       this.types = data;
       obv.unsubscribe();

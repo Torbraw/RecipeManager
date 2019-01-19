@@ -27,11 +27,14 @@ export class EditComponent implements OnInit {
   list_ingredient = new Map();
   baserecettename = "";
   uid;
+  y;
 
   constructor(private service: FirebaseService,private route: ActivatedRoute,private factoryResolver: ComponentFactoryResolver,
               public dialog: MatDialog, private router: Router, private auth : AuthService, public translate: TranslateService ) { }
 
   ngOnInit() {
+    let d = new Date();
+    this.y = d.getFullYear();
     this.baserecettename = this.route.snapshot.paramMap.get('recette');
     let obv = this.auth.getUser().subscribe(user => {
       this.uid = user.uid;

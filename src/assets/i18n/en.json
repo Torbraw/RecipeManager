@@ -41,7 +41,8 @@
     "list": "Ingredients list",
     "prep": "Making",
     "name": "Name",
-    "add": "Add"
+    "add": "Add",
+    "help": "Questions, comments, ideas? Write to recipemanagerhelp@gmail.com !"
   },
   "create": {
     "addRecipe": "Add a recipe"

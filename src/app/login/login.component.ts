@@ -8,10 +8,13 @@ import {Router} from '@angular/router';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
+  y;
 
   constructor(public auth: AuthService, public translate: TranslateService, private router: Router) { }
 
   ngOnInit() {
+    let d = new Date();
+    this.y = d.getFullYear();
     let obv = this.auth.user$.subscribe(user => {
       if (user != null){
         this.router.navigate(['/index'])

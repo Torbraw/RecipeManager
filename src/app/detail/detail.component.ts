@@ -16,10 +16,13 @@ export class DetailComponent implements OnInit {
   nbstar = 0;
   list_ingredient = [];
   uid;
+  y;
 
   constructor(private service: FirebaseService,private route: ActivatedRoute, private dialog: MatDialog,public router: Router, private auth: AuthService, public translate: TranslateService) { }
 
   ngOnInit() {
+    let d = new Date();
+    this.y = d.getFullYear();
     const recettename = this.route.snapshot.paramMap.get('recette');
     let obv = this.auth.getUser().subscribe(user => {
       this.uid = user.uid;

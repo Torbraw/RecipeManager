@@ -3,6 +3,17 @@
 .pointer{
   cursor: pointer;
 }
+.copyright{
+  color: black!important;
+  font-size: 12px!important;
+}
+.footer{
+  margin: 8px;
+}
+.help{
+  margin-top: 8px!important;
+  font-size: 13px!important;
+}
 .container {
   margin-left: auto;
   margin-right: auto;

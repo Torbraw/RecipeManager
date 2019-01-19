@@ -2,7 +2,7 @@
   "login": {
     "google": "Connectez vous avec Google pour commencer",
     "title": "Votre gestionnaire de recettes",
-    "body": "Fatigué de chercher dans tous vos livres pour chercher LA recette? Utiliser se site pour garder vos recettes aux mêmes endroits et les retrouvés plus facilement!"
+    "body": "Fatigué de chercher dans tous vos livres pour trouver LA recette? Utiliser se site pour garder vos recettes aux mêmes endroits et les retrouvés plus facilement!"
   },
   "navbar": {
     "logout": "Se déconnecter"
@@ -41,7 +41,8 @@
     "list": "Liste des ingrédients",
     "prep": "Préparation",
     "name": "Nom",
-    "add": "Ajouter"
+    "add": "Ajouter",
+    "help": "Questions, commentaires, idées? Écrivez à recipemanagerhelp@gmail.com !"
   },
   "create": {
     "addRecipe": "Ajouter une recette"
