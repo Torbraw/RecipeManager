@@ -30,6 +30,7 @@
 
 <div id="smallNav" class="w3-bar-block w3-pink w3-hide w3-hide-large w3-hide-medium w3-top">
   <a [routerLink]="['/create']" class="w3-bar-item w3-text-light-white w3-large w3-border-top">{{'various.add' | translate}}</a>
+  <a [routerLink]="['/public']" class="w3-bar-item w3-text-light-white w3-large w3-border-top">Publics</a>
   <a (click)="auth.signOut()" class="w3-bar-item w3-text-light-white w3-large pointer w3-border-top">{{'navbar.logout' | translate}}</a>
 </div>
 
