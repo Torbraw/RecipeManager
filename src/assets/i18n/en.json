@@ -2,7 +2,10 @@
   "login": {
     "google": "Sign in with Google to start",
     "title": "Your recipes manager",
-    "body": "Tired of searching in all your books to find THE recipe? Use this site to keep all your recipes in the same place to find it more easily!"
+    "body": "Tired of searching in all your books to find THE recipe? Use this site to keep all your recipes in the same place to find it more easily!",
+    "cookie": "Be sure that third party cookies are authorized on your navigator or only authorize",
+    "cookie1": " to be able to navigate on this site. To know how, ",
+    "clic": "clic here"
   },
   "navbar": {
     "logout": "Sign out"

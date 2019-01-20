@@ -2,7 +2,10 @@
   "login": {
     "google": "Connectez vous avec Google pour commencer",
     "title": "Votre gestionnaire de recettes",
-    "body": "Fatigué de chercher dans tous vos livres pour trouver LA recette? Utiliser se site pour garder vos recettes aux mêmes endroits et les retrouvés plus facilement!"
+    "body": "Fatigué de chercher dans tous vos livres pour trouver LA recette? Utiliser se site pour garder vos recettes aux mêmes endroits et les retrouvés plus facilement!",
+    "cookie": "Assurez-vous que les cookies tiers sont autorisés sur votre navigateur ou autoriser seulement",
+    "cookie1": " pour pouvoir naviguer sur se site. Pour savoir comment s'y prendre, ",
+    "clic": "cliquez ici"
   },
   "navbar": {
     "logout": "Se déconnecter"

@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   v = false;
   cookie = true;
+  href = "https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=fr";
 
   constructor(public auth: AuthService, public translate: TranslateService, private router: Router) { }
 
@@ -27,6 +28,15 @@ export class LoginComponent implements OnInit {
   closeCookie(){
     this.v = true;
     localStorage.setItem("cookie","true");
+  }
+  lang(){
+    if (this.translate.getDefaultLang() == "fr"){
+      this.href = "https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=en";
+      this.translate.setDefaultLang('en');
+    } else {
+      this.href = "https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=fr";
+      this.translate.setDefaultLang('fr');
+    }
   }
 
 }
