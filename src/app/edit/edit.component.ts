@@ -47,7 +47,7 @@ export class EditComponent implements OnInit {
         this.preparation = data[0].preparation;
         let tab = data[0].ingredients.split(',');
         for (let i = 0; i < tab.length;i++) {
-          let tab1 = tab[i].split(" ");
+          let tab1 = tab[i].split(";");
           this.list_ingredient.set(tab1[2], new Ingredient(tab1[0], tab1[1], tab1[2]));
         }
         this.populatetext();

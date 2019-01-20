@@ -27,6 +27,7 @@ export class DetailComponent implements OnInit {
       this.uid = user.uid;
       obv.unsubscribe();
       let x = this.service.getRecette(recettename,this.uid).subscribe(data => {
+        console.log(data);
         if (data.length == 0){
           this.router.navigate(['/error'])
         }
@@ -36,16 +37,9 @@ export class DetailComponent implements OnInit {
         this.preparation = data[0].preparation;
         let tab = data[0].ingredients.split(',');
         for (let i = 0; i < tab.length;i++) {
-          let tab1 = tab[i].split(" ");
-          if (tab1.length > 3){
-            this.list_qte[i] = tab1[0] + " " + tab1[1] + " " + tab1[2] + " " + tab1[3] + " " + tab1[4];
-            this.list_ingredient[i] = tab1[5];
-          } else if(tab1.length < 3){
-
-          } else {
-            this.list_qte[i] = tab1[0] + tab1[1];
-            this.list_ingredient[i] = tab1[2];
-          }
+          let tab1 = tab[i].split(";");
+          this.list_qte[i] = tab1[0] + " " + tab1[1];
+          this.list_ingredient[i] = tab1[2];
         }
         x.unsubscribe();
       });

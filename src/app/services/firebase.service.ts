@@ -29,14 +29,14 @@ export class FirebaseService {
     return types;
   }
 
-  addRecetteBd(name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string, publique: string) {
+  addRecetteBd(name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string, publique: boolean) {
     let ing = "";
 
     for (let entry of map.values()){
       if (ing == "") {
-        ing += entry.qte + " " + entry.type + " " + entry.nom
+        ing += entry.qte + ";" + entry.type + ";" + entry.nom
       } else {
-        ing += "," + entry.qte + " " + entry.type + " " + entry.nom
+        ing += "," + entry.qte + ";" + entry.type + ";" + entry.nom
       }
     }
 
@@ -49,15 +49,15 @@ export class FirebaseService {
     });
   }
 
-  editRecetteBd(basename: string,name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string, publique: string){
+  editRecetteBd(basename: string,name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string, publique: boolean){
     this.db.doc(`User/${uid}`).collection("Recette").doc(basename).delete();
     let ing = "";
 
     for (let entry of map.values()){
       if (ing == "") {
-        ing += entry.qte + " " + entry.type + " " + entry.nom
+        ing += entry.qte + ";" + entry.type + ";" + entry.nom
       } else {
-        ing += "," + entry.qte + " " + entry.type + " " + entry.nom
+        ing += "," + entry.qte + ";" + entry.type + ";" + entry.nom
       }
     }
 

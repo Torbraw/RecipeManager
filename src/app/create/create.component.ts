@@ -36,7 +36,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
   ingredient = "";
   preparation = "";
   nbstar = 0;
-  publique;
+  publique = false;
   list_ingredient = new Map();
   uid;
 
@@ -162,6 +162,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   addingredient(){
+    console.log(this.list_ingredient);
     if (this.ingredient == "" || this.qte == "") {
       if (this.translate.getDefaultLang() == 'fr'){
         this.elem.nativeElement.innerText = "Renseigner les champs requis.";
@@ -192,6 +193,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
         }
       }
     }
+    console.log(this.list_ingredient);
   }
 
   populatetext(){
