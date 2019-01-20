@@ -29,7 +29,7 @@ export class FirebaseService {
     return types;
   }
 
-  addRecetteBd(name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string) {
+  addRecetteBd(name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string, publique: string) {
     let ing = "";
 
     for (let entry of map.values()){
@@ -41,6 +41,7 @@ export class FirebaseService {
     }
 
     this.db.doc(`User/${uid}`).collection("Recette").doc(name).set({
+      publique: publique,
       name: name,
       nbStar: nbStar,
       preparation: prep,
@@ -48,7 +49,7 @@ export class FirebaseService {
     });
   }
 
-  editRecetteBd(basename: string,name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string){
+  editRecetteBd(basename: string,name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string, publique: string){
     this.db.doc(`User/${uid}`).collection("Recette").doc(basename).delete();
     let ing = "";
 
@@ -61,6 +62,7 @@ export class FirebaseService {
     }
 
     this.db.doc(`User/${uid}`).collection("Recette").doc(name).set({
+      publique: publique,
       name: name,
       nbStar: nbStar,
       preparation: prep,
@@ -74,6 +76,10 @@ export class FirebaseService {
       return ref.orderBy(field)
     }).valueChanges();
     return types;
+  }
+
+  getAllUsers(): Observable<any>{
+    return this.db.collection("User").valueChanges();
   }
 
   getRecette(name: string, uid: string): Observable<any> {

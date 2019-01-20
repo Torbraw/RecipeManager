@@ -17,6 +17,10 @@
     "search": "Search",
     "detail": "Detail"
   },
+  "publique":{
+    "list_publique": "Publics recipes list",
+    "noPublique": "No publics recipes available."
+  },
   "error": {
     "404": "Error 404",
     "notFound": "Sorry, it's impossible to find the page you asked!",

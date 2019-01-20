@@ -1,19 +1,16 @@
 <app-navbar></app-navbar>
 <div class="w3-section container" id="index">
   <div class="title w3-padding w3-row">
-    <h3 class="w3-text-pink w3-col l6 m6"><b>{{'index.list' | translate}}</b></h3>
+    <h3 class="w3-text-pink w3-col l6 m6"><b>{{'publique.list_publique' | translate}}</b></h3>
     <div class="w3-col l6 m6">
       <span class="w3-text-pink w3-large"><b>{{'index.search' | translate}} <span class="w3-small">({{'various.name' | translate}})</span></b></span>
       <input (keyup)="rechercher()" class="w3-input" [(ngModel)]="recherche">
     </div>
   </div>
   <div class="w3-card-4 w3-padding w3-text-pink w3-white">
-    <div class="w3-row w3-border-bottom w3-border-black w3-text-black">
-      <span class="w3-col l5 m5 s5 w3-large"><i class="fas fa-sort-alpha-down pointer w3-text-pink" id="nameFilter" (mouseover)="hover('name')" (click)="filterName()"></i></span>
-      <span class="w3-col l4 m4 s7 w3-large"><i class="fas fa-sort-amount-down pointer" id="starFilter" (mouseover)="hover('star')" (click)="filterStar()"></i></span>
-    </div>
+    <div class="w3-border-bottom w3-border-black w3-padding"></div>
     <div *ngIf="recettesAff.length == 0; then none else aff"></div>
-    <ng-template #aff>
+    <ng-template #aff class="w3-border-top">
       <div class="w3-row w3-border-bottom w3-border-black" *ngFor="let r of recettesAff | paginate: { itemsPerPage: 20, currentPage: p }">
         <span class="w3-col l5 m5 s5 w3-large overflow">{{r.name}}</span>
         <ng-template [ngIf]="r.nbStar === 0">
@@ -71,7 +68,7 @@
         </span>
         </ng-template>
         <div class="w3-col l3 m3 s3 w3-center">
-          <span [routerLink]="['/detail',r.name]" class="filter pointer w3-large padding0">{{'index.detail' | translate}}</span>
+          <span (click)="detail(r.name,r.uid)" class="filter pointer w3-large padding0">{{'index.detail' | translate}}</span>
         </div>
       </div>
       <div class="w3-center padding10top">
@@ -87,7 +84,7 @@
       </ng-template>
       <ng-template #noRecette>
         <div class="w3-center w3-large">
-          <p>{{'index.noRecipe' | translate}}<a [routerLink]="['/create']" class="here w3-bar-item w3-text-black w3-hover-text-pink">{{'index.here' | translate}}</a></p>
+          <p>{{'publique.noPublique' | translate}}</p>
         </div>
       </ng-template>
     </ng-template>

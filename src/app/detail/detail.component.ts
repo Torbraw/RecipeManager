@@ -15,30 +15,39 @@ export class DetailComponent implements OnInit {
   preparation = "";
   nbstar = 0;
   list_ingredient = [];
+  list_qte = [];
+  publique;
   uid;
-  y;
 
   constructor(private service: FirebaseService,private route: ActivatedRoute, private dialog: MatDialog,public router: Router, private auth: AuthService, public translate: TranslateService) { }
 
   ngOnInit() {
-    let d = new Date();
-    this.y = d.getFullYear();
     const recettename = this.route.snapshot.paramMap.get('recette');
     let obv = this.auth.getUser().subscribe(user => {
       this.uid = user.uid;
       obv.unsubscribe();
-      let $observ = this.service.getRecette(recettename,this.uid).subscribe(data => {
+      let x = this.service.getRecette(recettename,this.uid).subscribe(data => {
         if (data.length == 0){
           this.router.navigate(['/error'])
         }
+        this.publique = data[0].publique;
         this.nameRecette = data[0].name;
         this.nbstar = data[0].nbStar;
         this.preparation = data[0].preparation;
         let tab = data[0].ingredients.split(',');
         for (let i = 0; i < tab.length;i++) {
-          this.list_ingredient[i] = tab[i];
+          let tab1 = tab[i].split(" ");
+          if (tab1.length > 3){
+            this.list_qte[i] = tab1[0] + " " + tab1[1] + " " + tab1[2] + " " + tab1[3] + " " + tab1[4];
+            this.list_ingredient[i] = tab1[5];
+          } else if(tab1.length < 3){
+
+          } else {
+            this.list_qte[i] = tab1[0] + tab1[1];
+            this.list_ingredient[i] = tab1[2];
+          }
         }
-        $observ.unsubscribe();
+        x.unsubscribe();
       });
     });
   }

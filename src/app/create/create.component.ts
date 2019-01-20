@@ -36,9 +36,9 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
   ingredient = "";
   preparation = "";
   nbstar = 0;
+  publique;
   list_ingredient = new Map();
   uid;
-  y;
 
   constructor(private service: FirebaseService,private factoryResolver: ComponentFactoryResolver,private router: Router, public dialog: MatDialog,
               private auth: AuthService, public translate: TranslateService) {
@@ -70,8 +70,6 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   ngOnInit() {
-    let d = new Date();
-    this.y = d.getFullYear();
     let obv = this.service.getTypes().subscribe(data => {
       this.types = data;
       obv.unsubscribe();
@@ -117,7 +115,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
             });
           }
         } else {
-          this.service.addRecetteBd(this.nameRecette.trim(),this.nbstar,this.preparation.trim(),this.list_ingredient,this.uid);
+          this.service.addRecetteBd(this.nameRecette.trim(),this.nbstar,this.preparation.trim(),this.list_ingredient,this.uid,this.publique);
           if (this.translate.getDefaultLang() == 'fr') {
             swal({
               title: 'La recette à bien été ajouté',
@@ -171,7 +169,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
         this.elem.nativeElement.innerText = "Fill the required fields.";
       }
     } else {
-      if (this.qte == "" || !this.qte.match(/^[0-9]*[,/.]{0,1}[0-9]{1,}$/)){
+      if (this.qte == "" || !this.qte.match(/^[0-9 ]*[,/.]{0,1}[0-9]{1,}$/)){
         if (this.translate.getDefaultLang() == 'fr'){
           this.elem.nativeElement.innerText = "Entrer une quantité valide.";
         } else {
@@ -186,7 +184,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
           }
         } else {
           this.elem.nativeElement.innerText = "";
-          this.list_ingredient.set(this.ingredient.trim(), new Ingredient(this.qte, this.type, this.ingredient.trim()));
+          this.list_ingredient.set(this.ingredient.trim(), new Ingredient(this.qte.trim(), this.type, this.ingredient.trim()));
           this.populatetext();
           this.qte = "";
           this.ingredient = "";
@@ -231,7 +229,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
           this.elem.nativeElement.innerText = "Cannot modify the ingridient, got empty fields.";
         }
       } else {
-        if (data.qte == "" || !data.qte.match(/^[0-9]*[,/.]{0,1}[0-9]{1,}$/)) {
+        if (data.qte == "" || !data.qte.match(/^[0-9 ]*[,/.]{0,1}[0-9]{1,}$/)) {
           if (this.translate.getDefaultLang() == 'fr') {
             this.elem.nativeElement.innerText = "Impossible de modifier l'ingrédient, quantité invalide.";
           } else {
@@ -249,7 +247,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy  {
             if (data.nom != nom) {
               this.list_ingredient.delete(nom);
             }
-            let ingredient: Ingredient = new Ingredient(data.qte, data.type, data.nom.trim());
+            let ingredient: Ingredient = new Ingredient(data.qte.trim(), data.type, data.nom.trim());
             this.list_ingredient.set(data.nom, ingredient);
             this.populatetext();
           }

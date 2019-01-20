@@ -27,14 +27,12 @@ export class EditComponent implements OnInit {
   list_ingredient = new Map();
   baserecettename = "";
   uid;
-  y;
+  publique;
 
   constructor(private service: FirebaseService,private route: ActivatedRoute,private factoryResolver: ComponentFactoryResolver,
               public dialog: MatDialog, private router: Router, private auth : AuthService, public translate: TranslateService ) { }
 
   ngOnInit() {
-    let d = new Date();
-    this.y = d.getFullYear();
     this.baserecettename = this.route.snapshot.paramMap.get('recette');
     let obv = this.auth.getUser().subscribe(user => {
       this.uid = user.uid;
@@ -43,6 +41,7 @@ export class EditComponent implements OnInit {
         if (data.length == 0){
           this.router.navigate(['/error'])
         }
+        this.publique = data[0].publique;
         this.nameRecette = data[0].name;
         this.clickStar(data[0].nbStar);
         this.preparation = data[0].preparation;
@@ -69,7 +68,7 @@ export class EditComponent implements OnInit {
         this.elem.nativeElement.innerText = "Fill the required fields.";
       }
     } else {
-      if (this.qte == "" || !this.qte.match(/^[0-9]*[,/.]{0,1}[0-9]{1,}$/)){
+      if (this.qte == "" || !this.qte.match(/^[0-9 ]*[,/.]{0,1}[0-9]{1,}$/)){
         if (this.translate.getDefaultLang() == 'fr'){
           this.elem.nativeElement.innerText = "Entrer une quantité valide.";
         } else {
@@ -84,7 +83,7 @@ export class EditComponent implements OnInit {
           }
         } else {
           this.elem.nativeElement.innerText = "";
-          this.list_ingredient.set(this.ingredient.trim(), new Ingredient(this.qte, this.type, this.ingredient.trim()));
+          this.list_ingredient.set(this.ingredient.trim(), new Ingredient(this.qte.trim(), this.type, this.ingredient.trim()));
           this.populatetext();
           this.qte = "";
           this.ingredient = "";
@@ -129,7 +128,7 @@ export class EditComponent implements OnInit {
           this.elem.nativeElement.innerText = "Cannot modify the ingridient, got empty fields.";
         }
       } else {
-        if (data.qte == "" || !data.qte.match(/^[0-9]*[,/.]{0,1}[0-9]{1,}$/)) {
+        if (data.qte == "" || !data.qte.match(/^[0-9 ]*[,/.]{0,1}[0-9]{1,}$/)) {
           if (this.translate.getDefaultLang() == 'fr') {
             this.elem.nativeElement.innerText = "Impossible de modifier l'ingrédient, quantité invalide.";
           } else {
@@ -147,7 +146,7 @@ export class EditComponent implements OnInit {
             if (data.nom != nom) {
               this.list_ingredient.delete(nom);
             }
-            let ingredient: Ingredient = new Ingredient(data.qte, data.type, data.nom.trim());
+            let ingredient: Ingredient = new Ingredient(data.qte.trim(), data.type, data.nom.trim());
             this.list_ingredient.set(data.nom, ingredient);
             this.populatetext();
           }
@@ -228,7 +227,7 @@ export class EditComponent implements OnInit {
              });
            }
         } else {
-          this.service.editRecetteBd(this.baserecettename,this.nameRecette.trim(),this.nbstar,this.preparation.trim(),this.list_ingredient,this.uid);
+          this.service.editRecetteBd(this.baserecettename,this.nameRecette.trim(),this.nbstar,this.preparation.trim(),this.list_ingredient,this.uid,this.publique);
            if (this.translate.getDefaultLang() == 'fr') {
              swal({
                title: 'La recette à bien été modifié',

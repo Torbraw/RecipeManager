@@ -24,6 +24,8 @@ import {AuthGuard} from './services/auth.guard';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AngularFirestore} from '@angular/fire/firestore';
+import { ListpubliqueComponent } from './listpublique/listpublique.component';
+import { DetailpubliqueComponent } from './detailpublique/detailpublique.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -41,6 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditComponent,
     ErrorComponent,
     LoginComponent,
+    ListpubliqueComponent,
+    DetailpubliqueComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       { path: 'error', component: ErrorComponent,  canActivate: [AuthGuard] },
       { path: 'create', component: CreateComponent, runGuardsAndResolvers: 'always',  canActivate: [AuthGuard] },
       { path: 'detail/:recette', component: DetailComponent,  canActivate: [AuthGuard] },
+      { path: 'detailpublic/:recette', component: DetailpubliqueComponent,  canActivate: [AuthGuard] },
       { path: 'edit/:recette', component: EditComponent,  canActivate: [AuthGuard] },
+      { path: 'public', component: ListpubliqueComponent,  canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
     ], {onSameUrlNavigation: 'reload'})
   ],

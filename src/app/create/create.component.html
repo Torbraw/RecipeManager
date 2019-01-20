@@ -9,7 +9,7 @@
         <div class="w3-col l8 m8 res">
           <input [(ngModel)]="nameRecette" name="nameRecette" type="text" class="w3-input w3-border" placeholder="{{'various.name' | translate}}">
         </div>
-        <div class="w3-col l4 m4 w3-display-container res height40">
+        <div class="w3-col l4 l4 w3-display-container res height40">
           <div class="w3-text-pink w3-display-left padding8">
             <i class="far fa-star w3-xlarge pointer" (click)="clickStar(1)" id="star1"></i>
             <i class="far fa-star w3-xlarge pointer" (click)="clickStar(2)" id="star2"></i>
@@ -17,6 +17,9 @@
             <i class="far fa-star w3-xlarge pointer" (click)="clickStar(4)" id="star4"></i>
             <i class="far fa-star w3-xlarge pointer" (click)="clickStar(5)" id="star5"></i>
           </div>
+        </div>
+        <div class="w3-col l12 m12 w3-display-container res">
+          <input [(ngModel)]="publique" name="publique" class="w3-check" type="checkbox"><label class="w3-text-pink"> Public</label>
         </div>
       </div>
       <div class="w3-row-padding w3-padding">
@@ -53,7 +56,6 @@
       <hr class="footer">
       <div class="w3-center">
         <p class="margin0 help w3-text-pink">{{'various.help' | translate}}</p>
-        <span class="copyright">&#9400; Maxime Gendron - {{y}}</span>
       </div>
     </div>
   </form>

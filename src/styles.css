@@ -26,9 +26,19 @@ body {
   background-image: url("/assets/Image/pattern.png");
   background-size: cover;
 }
+.w3-bar-item {
+  padding: 8px 8px!important;
+}
 .title {
   background-color: #cccccc;
   border-radius: 15px 15px 0 0;
+}
+#close {
+  cursor: pointer;
+  margin-right: 10px;
+}
+#cookie{
+  z-index: 10;
 }
 .res {
   margin-top: 8px;
@@ -53,7 +63,7 @@ a {
 #smallNav {
   margin-top:52px;
 }
-#here {
+.here {
   text-decoration: underline;
 }
 .overflow {

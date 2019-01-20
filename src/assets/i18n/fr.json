@@ -17,6 +17,10 @@
     "search": "Rechercher",
     "detail": "Détail"
   },
+  "publique":{
+    "list_publique": "Liste des recettes publiques",
+    "noPublique": "Aucune recettes publics disponibles."
+  },
   "error": {
     "404": "Erreur 404",
     "notFound": "Désolé, impossible de trouver la page que vous demandez!",

@@ -1,5 +1,14 @@
 <div class="w3-row height">
   <div class="w3-display-container height">
+    <div *ngIf="cookie" class="w3-display-topmiddle" id="cookie" [hidden]="v">
+      <div class="w3-card-4 w3-white w3-padding w3-display-container">
+        <span id="close" class="w3-display-topright" (click)="closeCookie()"><b>x</b></span>
+        <p class="w3-tiny">
+          Assurez-vous que vous autorisez les cookies tiers ou autorisez seulement "<b>recipemanager-601ab.firebaseapp.com</b>" pour pouvoir naviguer sur se site.
+          Pour savoir comment s'y prendre, <a class="here" href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=fr">cliquez ici</a>
+        </p>
+      </div>
+    </div>
     <div class="w3-display-middle" id="login">
       <div class="w3-card-4 w3-white w3-padding w3-round-xlarge w3-center w3-text-pink">
         <div *ngIf="translate.getDefaultLang() == 'fr'; then fr else en"></div>
@@ -23,7 +32,6 @@
         <hr class="footer">
         <div>
           <p class="margin0 help">{{'various.help' | translate}}</p>
-          <span class="copyright">&#9400; Maxime Gendron - {{y}}</span>
         </div>
       </div>
     </div>

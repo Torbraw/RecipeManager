@@ -2,6 +2,7 @@
   <div class="container">
     <a [routerLink]="['/index']" class="w3-bar-item w3-text-light-white w3-xlarge"><i class="fas fa-book"></i></a>
     <a [routerLink]="['/create']" class="w3-bar-item w3-text-light-white w3-xlarge">{{'various.add' | translate}}</a>
+    <a [routerLink]="['/public']" class="w3-bar-item w3-text-light-white w3-xlarge">Publics</a>
     <a (click)="auth.signOut()" class="w3-bar-item w3-text-light-white w3-xlarge w3-right pointer">{{'navbar.logout' | translate}}</a>
     <div *ngIf="translate.getDefaultLang() == 'fr'; then fr else en"></div>
     <ng-template #fr>

@@ -40,11 +40,11 @@ export class AuthService{
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`User/${user.uid}`);
     const data = {
-      email: user.email,
+      uid: user.uid,
+      email: user.email
     };
 
     return userRef.set(data, { merge: true })
-
   }
 
   async signOut() {

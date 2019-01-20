@@ -15,13 +15,10 @@ export class ListComponent implements OnInit {
   uid;
   p: number = 1;
   recherche;
-  y;
 
   constructor(private service: FirebaseService, private auth: AuthService, public translate: TranslateService) { }
 
   ngOnInit() {
-    let d = new Date();
-    this.y = d.getFullYear();
     let obv = this.auth.getUser().subscribe(user => {
       this.uid = user.uid;
       this.populatelist("name","asc");
