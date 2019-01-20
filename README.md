@@ -4,9 +4,10 @@ Site web de gestionnaire de recette.
 
 # Code
 - Angular
-- Firebase
-- ngx-translate
-- ngx-pagination
+- Firestore
+- AngularFire https://github.com/angular/angularfire2
+- ngx-translate https://github.com/ngx-translate
+- ngx-pagination https://github.com/michaelbromley/ngx-pagination
 - Font-Awesome
 - FactoryResolver (dynamic content)
 
