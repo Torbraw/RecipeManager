@@ -73,6 +73,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       { path: 'edit/:recette', component: EditComponent,  canActivate: [AuthGuard] },
       { path: 'public', component: ListpubliqueComponent,  canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
+      { path: '**', component: ErrorComponent}
     ], {onSameUrlNavigation: 'reload'})
   ],
   providers: [AngularFirestore],
