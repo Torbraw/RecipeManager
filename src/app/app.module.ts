@@ -26,6 +26,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AngularFirestore} from '@angular/fire/firestore';
 import { ListpubliqueComponent } from './listpublique/listpublique.component';
 import { DetailpubliqueComponent } from './detailpublique/detailpublique.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     ListpubliqueComponent,
     DetailpubliqueComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
