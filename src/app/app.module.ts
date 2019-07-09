@@ -27,6 +27,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import { ListpubliqueComponent } from './listpublique/listpublique.component';
 import { DetailpubliqueComponent } from './detailpublique/detailpublique.component';
 import { FooterComponent } from './footer/footer.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -78,7 +79,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       { path: '**', component: ErrorComponent}
     ], {onSameUrlNavigation: 'reload'})
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFirestore, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   entryComponents: [DynamicComponent, EditdialogComponent],
   bootstrap: [AppComponent]
 })
