@@ -13,118 +13,118 @@ export class ListComponent implements OnInit {
   recettes: Recetteindex[] = [];
   recettesAff: Recetteindex[] = [];
   uid;
-  p: number = 1;
+  p = 1;
   recherche;
 
   constructor(private service: FirebaseService, private auth: AuthService, public translate: TranslateService) { }
 
   ngOnInit() {
-    let obv = this.auth.getUser().subscribe(user => {
+    const obv = this.auth.getUser().subscribe(user => {
       this.uid = user.uid;
-      this.populatelist("name","asc");
+      this.populatelist('name', 'asc');
       obv.unsubscribe();
     });
   }
 
-  hover(s: string){
-    let id = "";
+  hover(s: string) {
+    let id = '';
 
-    if (s == "name") {
-      id = "nameFilter";
+    if (s === 'name') {
+      id = 'nameFilter';
     } else {
-      id = "starFilter";
+      id = 'starFilter';
     }
 
-    let elem = document.getElementById(id);
+    const elem = document.getElementById(id);
 
-    if (!elem.classList.contains("w3-text-pink")) {
-      elem.classList.remove("filter");
-      elem.classList.add("w3-hover-text-pink")
+    if (!elem.classList.contains('w3-text-pink')) {
+      elem.classList.remove('filter');
+      elem.classList.add('w3-hover-text-pink');
     } else {
-      elem.classList.add("filter")
+      elem.classList.add('filter');
     }
   }
 
   filterStar() {
     let dir;
 
-    let elem = document.getElementById("starFilter");
-    let elemelse = document.getElementById("nameFilter");
+    const elem = document.getElementById('starFilter');
+    const elemelse = document.getElementById('nameFilter');
 
-    if (!elem.classList.contains("w3-text-pink")) {
-      elemelse.classList.remove("w3-text-pink");
-      elem.classList.add("w3-text-pink");
-      if (elem.classList.contains("fa-sort-amount-up")) {
-        dir = "asc";
+    if (!elem.classList.contains('w3-text-pink')) {
+      elemelse.classList.remove('w3-text-pink');
+      elem.classList.add('w3-text-pink');
+      if (elem.classList.contains('fa-sort-amount-up')) {
+        dir = 'asc';
       } else {
-        dir = "desc";
+        dir = 'desc';
       }
     } else {
-      if (elem.classList.contains("fa-sort-amount-up")) {
-        elem.classList.remove("fa-sort-amount-up");
-        elem.classList.add("fa-sort-amount-down");
-        dir = "desc";
+      if (elem.classList.contains('fa-sort-amount-up')) {
+        elem.classList.remove('fa-sort-amount-up');
+        elem.classList.add('fa-sort-amount-down');
+        dir = 'desc';
       } else {
-        elem.classList.remove("fa-sort-amount-down");
-        elem.classList.add("fa-sort-amount-up");
-        dir = "asc";
+        elem.classList.remove('fa-sort-amount-down');
+        elem.classList.add('fa-sort-amount-up');
+        dir = 'asc';
       }
     }
-    this.populatelist("nbStar",dir);
+    this.populatelist('nbStar', dir);
   }
 
   filterName() {
     let dir;
 
-    let elem = document.getElementById("nameFilter");
-    let elemelse = document.getElementById("starFilter");
+    const elem = document.getElementById('nameFilter');
+    const elemelse = document.getElementById('starFilter');
 
-    if (!elem.classList.contains("w3-text-pink")) {
-      elemelse.classList.remove("w3-text-pink");
-      elem.classList.add("w3-text-pink");
-      if (elem.classList.contains("fa-sort-alpha-down")) {
-        dir = "asc";
+    if (!elem.classList.contains('w3-text-pink')) {
+      elemelse.classList.remove('w3-text-pink');
+      elem.classList.add('w3-text-pink');
+      if (elem.classList.contains('fa-sort-alpha-down')) {
+        dir = 'asc';
       } else {
-        dir = "desc";
+        dir = 'desc';
       }
     } else {
-      if (elem.classList.contains("fa-sort-alpha-up")) {
-        elem.classList.remove("fa-sort-alpha-up");
-        elem.classList.add("fa-sort-alpha-down");
-        dir = "asc";
+      if (elem.classList.contains('fa-sort-alpha-up')) {
+        elem.classList.remove('fa-sort-alpha-up');
+        elem.classList.add('fa-sort-alpha-down');
+        dir = 'asc';
       } else {
-        elem.classList.remove("fa-sort-alpha-down");
-        elem.classList.add("fa-sort-alpha-up");
-        dir = "desc";
+        elem.classList.remove('fa-sort-alpha-down');
+        elem.classList.add('fa-sort-alpha-up');
+        dir = 'desc';
       }
     }
-    this.populatelist("name",dir);
+    this.populatelist('name', dir);
   }
 
   populatelist(field: string, dir: string) {
     this.service.getRecettes(field, this.uid).subscribe(data => {
-      for (let i = 0; i<data.length;i++) {
-        this.recettes[i] = new Recetteindex(data[i].name,data[i].nbStar);
+      for (let i = 0; i < data.length; i++) {
+        this.recettes[i] = new Recetteindex(data[i].name, data[i].nbStar);
       }
-      if (field == "name") {
+      if (field === 'name') {
         this.recettes.sort(function (a, b) {
           return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
         });
-        if (!(dir == "asc")) {
+        if (!(dir === 'asc')) {
           this.recettes.reverse();
         }
-      } else if (dir == "desc") {
+      } else if (dir === 'desc') {
         this.recettes.reverse();
       }
       this.recettesAff = this.recettes;
     });
   }
 
-  rechercher(){
+  rechercher() {
     this.recettesAff = [];
     let index = 0;
-    for (let i = 0; i < this.recettes.length; i ++){
-      if (this.recettes[i].name.toLowerCase().indexOf(this.recherche.toLowerCase()) != -1){
+    for (let i = 0; i < this.recettes.length; i ++) {
+      if (this.recettes[i].name.toLowerCase().indexOf(this.recherche.toLowerCase()) !== -1) {
         this.recettesAff[index] = this.recettes[i];
         index++;
       }

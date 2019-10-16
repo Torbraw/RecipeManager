@@ -17,30 +17,30 @@ export class FirebaseService {
 
   getTypes(): Observable<any> {
     let types: Observable<any>;
-    if (this.translate.getDefaultLang() == "fr") {
-      types = this.db.collection("Type", ref => {
-        return ref.orderBy('name')
+    if (this.translate.getDefaultLang() === 'fr') {
+      types = this.db.collection('Type', ref => {
+        return ref.orderBy('name');
       }).valueChanges();
     } else {
-      types = this.db.collection("TypeEng", ref => {
-        return ref.orderBy('name')
+      types = this.db.collection('TypeEng', ref => {
+        return ref.orderBy('name');
       }).valueChanges();
     }
     return types;
   }
 
-  addRecetteBd(name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string, publique: boolean) {
-    let ing = "";
+  addRecetteBd(name: string, nbStar: number, prep: string, map: Map<string, Ingredient>, uid: string, publique: boolean) {
+    let ing = '';
 
-    for (let entry of map.values()){
-      if (ing == "") {
-        ing += entry.qte + ";" + entry.type + ";" + entry.nom
+    for (const entry of map.values()) {
+      if (ing === '') {
+        ing += entry.qte + ';' + entry.type + ';' + entry.nom;
       } else {
-        ing += "," + entry.qte + ";" + entry.type + ";" + entry.nom
+        ing += ',' + entry.qte + ';' + entry.type + ';' + entry.nom;
       }
     }
 
-    this.db.doc(`User/${uid}`).collection("Recette").doc(name).set({
+    this.db.doc(`User/${uid}`).collection('Recette').doc(name).set({
       publique: publique,
       name: name,
       nbStar: nbStar,
@@ -49,19 +49,19 @@ export class FirebaseService {
     });
   }
 
-  editRecetteBd(basename: string,name: string, nbStar: number, prep: string, map: Map<string,Ingredient>, uid: string, publique: boolean){
-    this.db.doc(`User/${uid}`).collection("Recette").doc(basename).delete();
-    let ing = "";
+  editRecetteBd(basename: string, name: string, nbStar: number, prep: string, map: Map<string, Ingredient>, uid: string, publique: boolean) {
+    this.db.doc(`User/${uid}`).collection('Recette').doc(basename).delete();
+    let ing = '';
 
-    for (let entry of map.values()){
-      if (ing == "") {
-        ing += entry.qte + ";" + entry.type + ";" + entry.nom
+    for (const entry of map.values()) {
+      if (ing === '') {
+        ing += entry.qte + ';' + entry.type + ';' + entry.nom;
       } else {
-        ing += "," + entry.qte + ";" + entry.type + ";" + entry.nom
+        ing += ',' + entry.qte + ';' + entry.type + ';' + entry.nom;
       }
     }
 
-    this.db.doc(`User/${uid}`).collection("Recette").doc(name).set({
+    this.db.doc(`User/${uid}`).collection('Recette').doc(name).set({
       publique: publique,
       name: name,
       nbStar: nbStar,
@@ -72,23 +72,23 @@ export class FirebaseService {
 
   getRecettes(field: any, uid: string): Observable<any> {
     let types: Observable<any>;
-    types = this.db.doc(`User/${uid}`).collection("Recette", ref => {
-      return ref.orderBy(field)
+    types = this.db.doc(`User/${uid}`).collection('Recette', ref => {
+      return ref.orderBy(field);
     }).valueChanges();
     return types;
   }
 
-  getAllUsers(): Observable<any>{
-    return this.db.collection("User").valueChanges();
+  getAllUsers(): Observable<any> {
+    return this.db.collection('User').valueChanges();
   }
 
   getRecette(name: string, uid: string): Observable<any> {
-    return this.db.doc(`User/${uid}`).collection("Recette",ref => {
-      return ref.where('name', '==',name)
+    return this.db.doc(`User/${uid}`).collection('Recette', ref => {
+      return ref.where('name', '==', name);
     }).valueChanges();
   }
 
-  suppRecette(name: string, uid: string){
-    this.db.doc(`User/${uid}`).collection("Recette").doc(name).delete();
+  suppRecette(name: string, uid: string) {
+    this.db.doc(`User/${uid}`).collection('Recette').doc(name).delete();
   }
 }

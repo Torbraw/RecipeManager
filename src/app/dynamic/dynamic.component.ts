@@ -17,7 +17,7 @@ export class DynamicComponent implements OnInit {
   ngOnInit() {
   }
 
-  send(nom: string){
+  send(nom: string) {
     this.event.emit(nom);
   }
   sendedit(nom: string) {

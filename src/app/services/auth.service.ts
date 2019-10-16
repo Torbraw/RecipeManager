@@ -10,7 +10,7 @@ import { switchMap} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService{
+export class AuthService {
 
   user$: Observable<any>;
 
@@ -27,7 +27,7 @@ export class AuthService{
           return of(null);
         }
       })
-    )
+    );
   }
 
   async googleSignin() {
@@ -44,7 +44,7 @@ export class AuthService{
       email: user.email
     };
 
-    return userRef.set(data, { merge: true })
+    return userRef.set(data, { merge: true });
   }
 
   async signOut() {

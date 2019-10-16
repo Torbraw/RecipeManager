@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FirebaseService} from '../services/firebase.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
-import swal from "sweetalert2";
+import swal from 'sweetalert2';
 import {AuthService} from '../services/auth.service';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -11,34 +11,34 @@ import {TranslateService} from '@ngx-translate/core';
   templateUrl: './detail.component.html',
 })
 export class DetailComponent implements OnInit {
-  nameRecette = "";
-  preparation = "";
+  nameRecette = '';
+  preparation = '';
   nbstar = 0;
   list_ingredient = [];
   list_qte = [];
   publique;
   uid;
 
-  constructor(private service: FirebaseService,private route: ActivatedRoute, private dialog: MatDialog,public router: Router, private auth: AuthService, public translate: TranslateService) { }
+  constructor(private service: FirebaseService, private route: ActivatedRoute, private dialog: MatDialog, public router: Router, private auth: AuthService, public translate: TranslateService) { }
 
   ngOnInit() {
     const recettename = this.route.snapshot.paramMap.get('recette');
-    let obv = this.auth.getUser().subscribe(user => {
+    const obv = this.auth.getUser().subscribe(user => {
       this.uid = user.uid;
       obv.unsubscribe();
-      let x = this.service.getRecette(recettename,this.uid).subscribe(data => {
+      const x = this.service.getRecette(recettename, this.uid).subscribe(data => {
         console.log(data);
-        if (data.length == 0){
-          this.router.navigate(['/error'])
+        if (data.length === 0) {
+          this.router.navigate(['/error']);
         }
         this.publique = data[0].publique;
         this.nameRecette = data[0].name;
         this.nbstar = data[0].nbStar;
         this.preparation = data[0].preparation;
-        let tab = data[0].ingredients.split(',');
-        for (let i = 0; i < tab.length;i++) {
-          let tab1 = tab[i].split(";");
-          this.list_qte[i] = tab1[0] + " " + tab1[1];
+        const tab = data[0].ingredients.split(',');
+        for (let i = 0; i < tab.length; i++) {
+          const tab1 = tab[i].split(';');
+          this.list_qte[i] = tab1[0] + ' ' + tab1[1];
           this.list_ingredient[i] = tab1[2];
         }
         x.unsubscribe();
@@ -47,10 +47,10 @@ export class DetailComponent implements OnInit {
   }
 
   supp() {
-    if (this.translate.getDefaultLang() == "fr") {
+    if (this.translate.getDefaultLang() === 'fr') {
       swal({
         title: 'Attention',
-        text: "Êtes-vous sûr de vouloir supprimer la recette " + this.nameRecette + " ?",
+        text: 'Êtes-vous sûr de vouloir supprimer la recette ' + this.nameRecette + ' ?',
         type: 'warning',
         width: 800,
         focusCancel: true,
@@ -61,14 +61,14 @@ export class DetailComponent implements OnInit {
         cancelButtonText: 'Ne pas supprimer la recette'
       }).then((result) => {
         if (result.value) {
-          this.service.suppRecette(this.nameRecette,this.uid);
+          this.service.suppRecette(this.nameRecette, this.uid);
           this.router.navigate(['/index']);
         }
-      })
+      });
     } else {
       swal({
         title: 'Warning',
-        text: "Do you realy want to delete the recipe " + this.nameRecette + " ?",
+        text: 'Do you realy want to delete the recipe ' + this.nameRecette + ' ?',
         type: 'warning',
         width: 800,
         focusCancel: true,
@@ -79,10 +79,10 @@ export class DetailComponent implements OnInit {
         cancelButtonText: 'Don\'t delete the recipe'
       }).then((result) => {
         if (result.value) {
-          this.service.suppRecette(this.nameRecette,this.uid);
+          this.service.suppRecette(this.nameRecette, this.uid);
           this.router.navigate(['/index']);
         }
-      })
+      });
     }
 
   }

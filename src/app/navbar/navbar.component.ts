@@ -8,17 +8,17 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public auth: AuthService,public translate: TranslateService) { }
+  constructor(public auth: AuthService, public translate: TranslateService) { }
 
   ngOnInit() {
   }
 
   show() {
-    let x = document.getElementById("smallNav");
-    if (x.className.indexOf("w3-show") == -1) {
-      x.className += " w3-show";
+    const x = document.getElementById('smallNav');
+    if (x.className.indexOf('w3-show') === -1) {
+      x.className += 'w3-show';
     } else {
-      x.className = x.className.replace(" w3-show", "");
+      x.className = x.className.replace(' w3-show', '');
     }
   }
 }
