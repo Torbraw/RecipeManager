@@ -1,5 +1,5 @@
 # RecipeManager
-Site web de gestionnaire de recette.
+Site web de gestionnaire de recette. (Old project, not working anymore since no more firebase account)
 ~ 50h de dévelopemment (beaucoup de nouveautés, donc recherche)
 
 # Code
